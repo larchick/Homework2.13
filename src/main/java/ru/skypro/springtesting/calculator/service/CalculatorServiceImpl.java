@@ -4,24 +4,25 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
+    public String greeting(){ return "Добро пожаловать в калькулятор!";}
 
-    @Override
-    public String plus(Integer num1, Integer num2) {
-        return String.valueOf(num1 + num2);
+
+    public Integer plus(Integer num, Integer num2) {
+        return num + num2;
     }
 
-    @Override
-    public String minus(Integer num1, Integer num2) {
-        return String.valueOf(num1 - num2);
+    public Integer minus(Integer num, Integer num2) {
+        return num - num2;
     }
 
-    @Override
-    public String multiply(Integer num1, Integer num2) {
-        return String.valueOf(num1 * num2);
+    public Integer multiply(Integer num, Integer num2) {
+        return num * num2;
     }
 
-    @Override
-    public String divide(Integer num1, Integer num2) {
-        return String.valueOf(num1 / num2);
+    public Double divide(Integer num, Integer num2){
+        if (num2 == 0){
+            throw new IllegalArgumentException();
+        }
+        return (double) num / num2;
     }
 }

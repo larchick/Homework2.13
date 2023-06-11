@@ -22,36 +22,36 @@ public class CalculatorController {
     }
 
     @GetMapping("/plus")
-    public String plus(
-            @RequestParam(name = "num1", required = false) Integer num1,
+    public Integer plus(
+            @RequestParam(name = "num", required = false) Integer num1,
             @RequestParam(name = "num2", required = false) Integer num2
     ) {
         if (num1 == null || num2 == null){
-            return "Отсутствуют значения!";
+            return Integer.valueOf("Отсутствуют значения!");
         }
         return calculatorService.plus(num1, num2);
     }
 
     @GetMapping("/minus")
     public String minus(
-            @RequestParam(name = "num1", required = false) Integer num1,
+            @RequestParam(name = "num", required = false) Integer num1,
             @RequestParam(name = "num2", required = false) Integer num2
     ) {
         if (num1 == null || num2 == null) {
             return "Отсутствуют значения!";
         }
-        return calculatorService.minus(num1, num2);
+        return String.valueOf(calculatorService.minus(num1, num2));
     }
 
     @GetMapping("/multiply")
     public String multiply(
-            @RequestParam(name = "num1", required = false) Integer num1,
+            @RequestParam(name = "num", required = false) Integer num1,
             @RequestParam(name = "num2", required = false) Integer num2
     ) {
         if (num1 == null || num2 == null) {
             return "Отсутствуют значения!";
         }
-        return calculatorService.multiply(num1, num2);
+        return String.valueOf(calculatorService.multiply(num1, num2));
     }
 
     @GetMapping("/divide")
@@ -59,12 +59,8 @@ public class CalculatorController {
             @RequestParam(name = "num1", required = false) Integer num1,
             @RequestParam(name = "num2", required = false) Integer num2
     ) {
-        if (num1 == null || num2 == null) {
-            return "Отсутствуют значения!";
-        }
-        if (num2 == 0){
-            return "Деление на 0 запрещено!";
-        }
-        return calculatorService.divide(num1, num2);
+
+        return String.valueOf(calculatorService.divide(num1, num2));
     }
+
 }
